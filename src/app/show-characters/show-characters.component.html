@@ -1,0 +1,34 @@
+<div class="row">
+        <div class="col-xs-12">
+          <h2>Les personnages</h2>
+          <ul class="list-group">
+    <div *ngFor = "let character of charactersList">
+                    <div class="card">
+                    <p>Nom du personnage : {{ character.characterName}}</p>
+                    <p>Points de vie : {{ character.healthPoints }}</p>
+                    <p>Points de mana : {{ character.manaPoints }}</p>
+                    <p>Points d'armure : {{ character.armorPoints }}</p>
+                    <p>Points d'attaque {{ character.damagePoints }}</p>
+                    <br>
+                    <p>Les objets</p>
+                    <div *ngFor ="let item of character.items">
+                      
+                      <p>Nom:  {{ item.itemName }}</p>
+                      <p>Points de vie bonus {{ item.bonusHealth }}</p>
+                      <p>Points de mana bonus {{ item.bonusMana }}</p>
+                      <p>Points d'armor bonus {{ item.bonusArmor }}</p>
+                      <p>Points d'attaque bonus {{ item.bonusDamage }}</p>
+                    </div>
+                    </div>
+                    <br>
+
+                </div>
+          </ul>
+        </div>
+      </div>
+
+
+      
+      
+      
+      
