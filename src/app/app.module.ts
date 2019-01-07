@@ -8,6 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemListComponent } from './item-list/item-list.component';
 import { FormCharactersComponent } from './form-characters/form-characters.component';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: 'characters', component: ShowCharactersComponent },
+  {path: 'formCharacters', component: FormCharactersComponent }
+]; 
 
 
 @NgModule({
@@ -23,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

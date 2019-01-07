@@ -11,6 +11,6 @@ export class FormcharacterServiceService {
   constructor(private httpClient : HttpClient) { }
 
   public addCharacter (character: Character): Observable<Character> {
-    return this.httpClient.post<Character>('http://localhost:8080/api/characters', character);
+    return this.httpClient.post<Character>('http://localhost:8080/api/formCharacters', character);
   }
 }
