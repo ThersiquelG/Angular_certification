@@ -12,17 +12,28 @@ import  { FormcharacterServiceService } from '../services/formcharacter-service.
 export class FormCharactersComponent implements OnInit {
 
   itemService: Item[];
-  characters : Character[];
   character = new Character();
+  itemListCharacter: Item[] = [];
   constructor(private fmService: FormcharacterServiceService, private its: ItemServiceService ) { }
 
   ngOnInit() {
-    this.its.getAllItems().subscribe(itemList =>{ this.itemService = itemList});
+    this.its.getAllItems().subscribe(itemList => { this.itemService = itemList });
   }
-
-  newCharacter(){
-    this.fmService.addCharacter(this.character).subscribe(character => this.characters.push(character));
-    console.log("character added");
+  logCharacter(selectedItem) {
+    console.log("logCharacter method")
+    console.log(selectedItem);
+    this.itemListCharacter.push(selectedItem);
+    console.log("Log de la liste d'item");
+    console.log(this.itemListCharacter);
+    this.character.items = this.itemListCharacter;
+    console.log("Log de la liste character.items");
+    console.log(this.character);
   }
-
+  newCharacter() {
+    console.log("newcharacter method")
+    console.log(this.character);
+     this.fmService.addCharacter(this.character).subscribe( () => console.log('character added'));
+   
+   
+  }
 }

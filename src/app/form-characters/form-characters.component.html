@@ -15,7 +15,7 @@
     <p>Les points de vie : {{ character.healthPoints }} </p>
 
     <div class="form-group">
-      <label for="">Points de manna de mon personnage</label>
+      <label for="">Points de mana de mon personnage</label>
       <input type="number" class="form-control" [(ngModel)]="character.manaPoints" name="mana">
     </div>
     <p>Les points de mana: {{ character.manaPoints }} </p>
@@ -30,49 +30,18 @@
       <label for="">Points d'attaque de mon personnage</label>
       <input type="number" class="form-control" [(ngModel)]="character.damagePoints" name="cDamage">
     </div>
-    <p>Les points d'attaque {{ character.damagePoints }}</p>
+    <p>Les points d'attaque : {{ character.damagePoints }}</p>
 
-
-
-    <div class="form-group">
-      <label for="">Choississez un objet </label>
-      <select class="form-control" [(ngModel)]="character.items" name="item1">
-        <option *ngFor="let item of itemService">{{item.itemName}} 
-                                                           ATQ: {{ item.bonusDamage }} ||
-                                                           HP Bonus: {{ item.bonusHealth }} ||
-                                                           Mana Bonus: {{ item.bonusMana }} ||
-                                                           Armor Bonus: {{ item.bonusArmor }} 
-        </option>
-      </select>
-    </div>
-    
-    
-
-    <div class="form-group">
-      <label for="">Choississez un objet </label>
-      <select class="form-control">
-        <option *ngFor="let item of itemService" [value]="item">{{item.itemName}} 
-                                                           ATQ: {{ item.bonusDamage }} ||
-                                                           HP Bonus: {{ item.bonusHealth }} ||
-                                                           Mana Bonus: {{ item.bonusMana }} ||
-                                                           Armor Bonus: {{ item.bonusArmor }} 
-        </option>
-      </select>
-    </div>
-    
-    <div class="form-group">
-      <label for="">Choississez un objet </label>
-      <select class="form-control">
-        <option *ngFor="let item of itemService" [value]="items">{{item.itemName}} 
-                                                           ATQ: {{ item.bonusDamage }} ||
-                                                           HP Bonus: {{ item.bonusHealth }} ||
-                                                           Mana Bonus: {{ item.bonusMana }} ||
-                                                           Armor Bonus: {{ item.bonusArmor }} 
-        </option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-success" (click)="newCharacter()">Valider</button>
-
-  </form>
+    <select class="form-group" name="selectedItem" [(ngModel)]="character.items" (ngModelChange)="logCharacter($event)">
+      <option *ngFor="let item of itemService" [ngValue]=item>
+        {{ item.itemName }}
+      </option>
+    </select>
+    <p>Vous avez choisi ces objets</p>
+    <div *ngFor ="let item of character.items">
+      <p>Nom:  {{ item.itemName }}</p>
+      <p>id de l'item {{ item.id }}</p>
+    </div>   
+    <button type="submit" class="btn btn-success" (click)="newCharacter()" >Valider</button>
+  </form>  
 </div>
