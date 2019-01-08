@@ -1,46 +1,75 @@
 <div class="container">
-  <h1>Je créer mon build</h1>
-  <form>
+  <h1>Create my build</h1>
+  <form #f="ngForm">
     <div class="form-group">
-      <label for="">Nom de mon personnage</label>
-      <input type="text" class="form-control" [(ngModel)]="character.characterName" name="cName">
+      <label for="">My Character's name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="character.characterName"
+        name="cName"
+        ngModel required
+      />
     </div>
-    <p>le nom : {{ character.characterName }} </p>
-
     <div class="form-group">
-      <label for="">Points de vie de mon personnage</label>
-      <input type="number" class="form-control" [(ngModel)]="character.healthPoints" name="hp">
+      <label for="">Health points</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="character.healthPoints"
+        name="hp"
+        ngModel required
+      />
     </div>
-    <p>Les points de vie : {{ character.healthPoints }} </p>
-
     <div class="form-group">
-      <label for="">Points de mana de mon personnage</label>
-      <input type="number" class="form-control" [(ngModel)]="character.manaPoints" name="mana">
+      <label for="">Mana points</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="character.manaPoints"
+        name="mana"
+        ngModel required
+      />
     </div>
-    <p>Les points de mana: {{ character.manaPoints }} </p>
-
     <div class="form-group">
-      <label for="">Points d'armure de mon personnage</label>
-      <input type="number" class="form-control" [(ngModel)]="character.armorPoints" name="armor">
+      <label for="">Armor points</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="character.armorPoints"
+        name="armor"
+        ngModel required
+      />
     </div>
-    <p>Les points d'armure: {{ character.armorPoints }}</p>
-
     <div class="form-group">
-      <label for="">Points d'attaque de mon personnage</label>
-      <input type="number" class="form-control" [(ngModel)]="character.damagePoints" name="cDamage">
+      <label for="">Damage points</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="character.damagePoints"
+        name="cDamage"
+        ngModel required
+      />
     </div>
-    <p>Les points d'attaque : {{ character.damagePoints }}</p>
-
-    <select class="form-group" name="selectedItem" [(ngModel)]="character.items" (ngModelChange)="logCharacter($event)">
-      <option *ngFor="let item of itemService" [ngValue]=item>
+    <select
+      class="form-group"
+      name="selectedItem"
+      [(ngModel)]="character.items"
+      (ngModelChange)="logCharacter($event)"
+      ngModel required
+    >
+      <option *ngFor="let item of itemService" [ngValue]="item">
         {{ item.itemName }}
       </option>
     </select>
 
-    <div *ngFor ="let item of character.items">
-      <p>Nom:  {{ item.itemName }}</p>
-      <p>id de l'item {{ item.id }}</p>
-    </div>   
-    <button type="submit" class="btn btn-success" (click)="newCharacter()" >Valider</button>
-  </form>  
+    <div *ngFor="let item of character.items">
+      <p>You selected: {{ item.itemName }}</p>
+      <p>With this item your character will have {{ character.healthPoints + item.bonusHealth }} health points.<br>
+      {{ character.healthPoints }} + {{ item.bonusHealth }}</p>
+    </div>
+    <button type="submit" class="btn btn-success" (click)="newCharacter()" [disabled]="f.invalid">
+     Send my build !
+    </button>
+  </form>
 </div>

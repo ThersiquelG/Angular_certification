@@ -1,36 +1,47 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-          <h2>Les personnages</h2>
-          <ul class="list-group">
-    <div *ngFor = "let character of charactersList">
-                    <div class="card">
-                    <p>Nom du personnage : {{ character.characterName}}</p>
-                    <p>Points de vie : {{ character.healthPoints }}</p>
-                    <p>Points de mana : {{ character.manaPoints }}</p>
-                    <p>Points d'armure : {{ character.armorPoints }}</p>
-                    <p>Points d'attaque {{ character.damagePoints }}</p>
-                    <br>
-                    <p>Les objets</p>
-                    <div *ngFor ="let item of character.items">
-                      
-                      <p>Nom:  {{ item.itemName }}</p>
-                      <p>Points de vie bonus {{ item.bonusHealth }}</p>
-                      <p>Points de mana bonus {{ item.bonusMana }}</p>
-                      <p>Points d'armor bonus {{ item.bonusArmor }}</p>
-                      <p>Points d'attaque bonus {{ item.bonusDamage }}</p>
-                    </div>
-                    </div>
-                    <br>
-
-                </div>
-          </ul>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let character of charactersList">
+      <div class="d-inline-flex p-2 col-example">
+        <ul class="list-group">
+          <li class="list-group-item">
+            Character's name : {{ character.characterName }}
+            <p>Health points: {{ character.healthPoints }}</p>
+            <p>Mana points : {{ character.manaPoints }}</p>
+            <p>Armor points : {{ character.armorPoints }}</p>
+            <p>Damage points : {{ character.damagePoints }}</p>
+            <div *ngFor="let item of character.items">
+              <!--Table-->
+              <table class="table table-sm table-hover">
+                <!--Table head-->
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Item's name</th>
+                    <th>Health points</th>
+                    <th>Mana points</th>
+                    <th>Armor points</th>
+                    <th>Damage points</th>
+                  </tr>
+                </thead>
+                <!--Table head-->
+                <!--Table body-->
+                <tbody>
+                  <tr>
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.itemName }}</td>
+                    <td>{{ item.bonusHealth }} +</td>
+                    <td>{{ item.bonusMana }} +</td>
+                    <td>{{ item.bonusArmor }} +</td>
+                    <td>{{ item.bonusDamage }} +</td>
+                  </tr>
+                </tbody>
+                <!--Table body-->
+              </table>
+              <!--Table-->
+            </div>
+          </li>
+        </ul>
       </div>
+    </div>
+  </div>
 </div>
-
-
-      
-      
-      
-      

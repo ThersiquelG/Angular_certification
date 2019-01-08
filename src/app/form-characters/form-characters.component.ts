@@ -22,6 +22,7 @@ export class FormCharactersComponent implements OnInit {
   logCharacter(selectedItem) {
     console.log("logCharacter method")
     console.log(selectedItem);
+    this.itemListCharacter.length = 0;
     this.itemListCharacter.push(selectedItem);
     console.log("Log de la liste d'item");
     console.log(this.itemListCharacter);
