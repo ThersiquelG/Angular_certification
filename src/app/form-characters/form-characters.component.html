@@ -2,61 +2,100 @@
   <h1>Create my build</h1>
   <form #f="ngForm">
     <div class="form-group">
-      <label for="">My Character's name</label>
+      <label>My Character's name</label>
       <input
         type="text"
         class="form-control"
         [(ngModel)]="character.characterName"
         name="cName"
-        ngModel required
+        ngModel
+        required
       />
     </div>
     <div class="form-group">
-      <label for="">Health points</label>
+      <label
+        >Health points
+        <img
+          src="https://i.imgur.com/5KXKPih.png"
+          alt="health potion"
+          width="32"
+          height="32"
+        />
+      </label>
       <input
         type="number"
         class="form-control"
         [(ngModel)]="character.healthPoints"
         name="hp"
-        ngModel required
+        ngModel
+        required
       />
     </div>
     <div class="form-group">
-      <label for="">Mana points</label>
+      <label
+        >Mana points
+        <img
+          src="https://i.imgur.com/WaYhJSU.png"
+          alt="mana potion"
+          width="32"
+          height="32"
+        />
+      </label>
       <input
         type="number"
         class="form-control"
         [(ngModel)]="character.manaPoints"
         name="mana"
-        ngModel required
+        ngModel
+        required
       />
     </div>
     <div class="form-group">
-      <label for="">Armor points</label>
+      <label
+        >Armor points
+        <img
+          src="https://i.imgur.com/6wd8C4Y.png"
+          alt="armor"
+          width="32"
+          height="32"
+        />
+      </label>
       <input
         type="number"
         class="form-control"
         [(ngModel)]="character.armorPoints"
         name="armor"
-        ngModel required
+        ngModel
+        required
       />
     </div>
     <div class="form-group">
-      <label for="">Damage points</label>
+      <label
+        >Damage points
+        <img
+          src="https://i.imgur.com/C7aaTyM.png"
+          alt="katana"
+          width="32"
+          height="32"
+        />
+      </label>
       <input
         type="number"
         class="form-control"
         [(ngModel)]="character.damagePoints"
         name="cDamage"
-        ngModel required
+        ngModel
+        required
       />
     </div>
+    <p>And select your item here !</p>
     <select
       class="form-group"
       name="selectedItem"
       [(ngModel)]="character.items"
       (ngModelChange)="logCharacter($event)"
-      ngModel required
+      ngModel
+      required
     >
       <option *ngFor="let item of itemService" [ngValue]="item">
         {{ item.itemName }}
@@ -65,11 +104,37 @@
 
     <div *ngFor="let item of character.items">
       <p>You selected: {{ item.itemName }}</p>
-      <p>With this item your character will have {{ character.healthPoints + item.bonusHealth }} health points.<br>
-      {{ character.healthPoints }} + {{ item.bonusHealth }}</p>
+      <p>
+        Your health points with this item :
+        {{ character.healthPoints + item.bonusHealth }} health points.<br />
+        {{ character.healthPoints }} + {{ item.bonusHealth }}
+      </p>
+
+      <p>
+        Your mana points with this item :
+        {{ character.manaPoints + item.bonusMana }} mana points.<br />
+        {{ character.manaPoints }} + {{ item.bonusMana }}
+      </p>
+
+      <p>
+        Your armor points with this item :
+        {{ character.armorPoints + item.bonusArmor }} armor points.<br />
+        {{ character.armorPoints }} + {{ item.bonusArmor }}
+      </p>
+
+      <p>
+        Your damage points with this item :
+        {{ character.damagePoints + item.bonusDamage }} damage points.<br />
+        {{ character.damagePoints }} + {{ item.bonusDamage }}
+      </p>
     </div>
-    <button type="submit" class="btn btn-success" (click)="newCharacter()" [disabled]="f.invalid">
-     Send my build !
+    <button
+      type="submit"
+      class="btn btn-success"
+      (click)="newCharacter()"
+      [disabled]="f.invalid"
+    >
+      Send my build !
     </button>
   </form>
 </div>

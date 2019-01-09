@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 const appRoutes: Routes = [
   {path: 'characters', component: ShowCharactersComponent },
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
     FormCharactersComponent,
     HeaderComponent,
     MainComponent,
+    FooterComponent,
     
   ],
   imports: [
